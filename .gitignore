@@ -1,0 +1,15 @@
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ignore local hidden files and tool state, while keeping public templates.
+/.*
+!/.env.example
+!/.gitignore
+
+# Local copy of the assignment brief; not part of the application source.
+Python Task.pdf
