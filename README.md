@@ -8,15 +8,15 @@ pipeline — all exposed through a FastAPI service.
 ## Architecture
 
 ```
-GSMArena  --scrape-->  PostgreSQL/Neon  --embed-->  pgvector table
-                            |                            |
-                            v                            v
-                  LangChain agents  <-------  RAG chain (ChatGroq)
-                  (Data Specialist                    |
-                   + Review Generator)                 |
-                            |                           |
-                            v                           v
-                       FastAPI: POST /review     FastAPI: POST /ask
+[ GSMArena ]  --scrape-->  [ PostgreSQL/Neon ]  --embed-->  [ pgvector table ]
+                                    |                                |
+                                    v                                v
+                          [ LangChain Agents ] <-------- [ RAG Chain (ChatGroq) ]
+                          (Data Specialist                           |
+                           + Review Generator)                       |
+                                    |                                |
+                                    v                                v
+                        [ FastAPI: POST /review ]         [ FastAPI: POST /ask ]
 ```
 
 - **Scraper** (`app/scraper/`): `requests` + `BeautifulSoup` against a curated,
