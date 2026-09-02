@@ -42,9 +42,6 @@ GSMArena  --scrape-->  PostgreSQL/Neon  --embed-->  pgvector table
   retrieves a phone's specs from Postgres via a tool; a second **Review
   Generator** agent turns those specs into a Markdown review (Summary / Pros /
   Cons / Rating).
-- **API** (`app/api/`): FastAPI. `POST /ask` hits the RAG chain, `POST
-  /review` runs the two-agent pipeline. `GET /phones`, `GET /phones/{name}`,
-  and `GET /health` exist to make Swagger UI (`/docs`) demo-able.
 
 ## Implementation Notes
 
