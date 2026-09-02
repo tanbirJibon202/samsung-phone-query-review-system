@@ -210,14 +210,6 @@ python -m scripts.backfill_structured_fields  # safe/idempotent schema + derived
 python -m app.ingest                # embeds them into the pgvector table
 ```
 
-### 5. Run the API
-
-```
-uvicorn app.api.main:app --reload
-```
-
-Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) for Swagger UI.
-
 ## Example requests
 
 ```bash
