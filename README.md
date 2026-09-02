@@ -160,17 +160,7 @@ dollars; the original multi-currency text is preserved instead.
 ### 10. Automated and live verification
 
 The `tests/` suite covers alias collisions, comparison extraction, GSMArena
-parsing, battery routing, price handling and API input validation. The
-end-to-end verification process is:
-
-```text
-GSMArena URL check -> scrape/upsert -> structured-field backfill
-                    -> pgvector indexing -> pytest
-                    -> Swagger/API query and review demonstration
-```
-
-All 15 curated GSMArena URLs, database rows and vector records can be
-verified through this pipeline before deployment.
+parsing, battery routing, price handling and API input validation.
 
 ## Setup
 
