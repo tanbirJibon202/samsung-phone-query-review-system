@@ -46,18 +46,18 @@ GSMArena  --scrape-->  PostgreSQL/Neon  --embed-->  pgvector table
   /review` runs the two-agent pipeline. `GET /phones`, `GET /phones/{name}`,
   and `GET /health` exist to make Swagger UI (`/docs`) demo-able.
 
-## How We Built It: End to End
+## Implementation Notes
 
-### 1. Turned the task into four components
+### 1. Four connected components
 
-The assignment was divided into four connected parts: a GSMArena scraper, a
+The system is organized into four connected parts: a GSMArena scraper, a
 structured PostgreSQL database, a RAG chatbot with a multi-agent review flow,
 and a FastAPI service. Keeping these concerns in separate modules makes each
 part independently testable while allowing them to work as one pipeline.
 
 ### 2. Selected and verified the phone catalog
 
-We created a curated catalog of 15 Samsung models covering the Galaxy S21,
+The project uses a curated catalog of 15 Samsung models covering the Galaxy S21,
 S22, S23 and S24 families, plus popular A-series and foldable devices. Each
 entry maps a canonical phone name to its GSMArena specification-page URL in
 `app/scraper/phone_urls.py`. The companion script
@@ -160,11 +160,11 @@ active-use score when available, while battery-capacity questions remain a
 separate SQL metric. Prices without a real USD value are not mislabeled as
 dollars; the original multi-currency text is preserved instead.
 
-### 10. Added automated and live verification
+### 10. Automated and live verification
 
 The `tests/` suite covers alias collisions, comparison extraction, GSMArena
-parsing, battery routing, price handling and API input validation. The final
-verification process is:
+parsing, battery routing, price handling and API input validation. The
+end-to-end verification process is:
 
 ```text
 GSMArena URL check -> scrape/upsert -> structured-field backfill
@@ -172,8 +172,8 @@ GSMArena URL check -> scrape/upsert -> structured-field backfill
                     -> Swagger/API query and review demonstration
 ```
 
-All 15 curated GSMArena URLs, database rows and vector records can therefore
-be checked before recording the submission video.
+All 15 curated GSMArena URLs, database rows and vector records can be
+verified through this pipeline before deployment.
 
 ## Setup
 
@@ -217,17 +217,6 @@ uvicorn app.api.main:app --reload
 ```
 
 Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) for Swagger UI.
-
-### 6. Run the tests
-
-```
-pip install -r requirements-dev.txt
-pytest -q
-```
-
-The regression suite covers base/Plus alias collisions, comparison matching,
-GSMArena parsing, battery-life routing, price handling, and API input
-validation.
 
 ## Example requests
 
