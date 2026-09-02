@@ -265,10 +265,3 @@ app/
 scripts/
 └── verify_gsmarena_urls.py  # preflight check on the curated phone URL list
 ```
-
-## Next steps (outside the codebase)
-
-Per the task submission guidelines: push this repo to GitHub, record a 5-10
-minute walkthrough video (Swagger UI, database contents, chatbot queries,
-multi-agent review output) and upload it to Google Drive with a shareable
-link, then email both links to `hr02@gtrbd.com` and `hr01@gtrbd.com`.
